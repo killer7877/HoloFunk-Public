@@ -1,0 +1,22 @@
+name: Holofunk
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: krdlab/setup-haxe@v1
+      - name: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.2.5
+      - name: Install Haxelib
+        run: |
+          haxe -version
+          haxelib install hxnodejs
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: windowsBuild
+          path: export/release/windows/bin
