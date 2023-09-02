@@ -8,12 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: krdlab/setup-haxe@v1
-        with:
+      - with:
           haxe-version: 4.2.5
-        run: |
+      - run: |
           haxe -version
           haxelib install hxnodejs
-        uses: actions/upload-artifact@v2.2.4
-        with:
+      - uses: actions/upload-artifact@v2.2.4
+      - with:
           name: windowsBuild
           path: export/release/windows/bin
